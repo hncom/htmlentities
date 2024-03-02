@@ -4,6 +4,7 @@ require_relative "./spec_helper"
 RSpec.describe 'Round trip conversion' do
   let(:xhtml1_entities) { HTMLEntities.new('xhtml1') }
   let(:html4_entities) { HTMLEntities.new('html4') }
+  let(:extended_entities) { HTMLEntities.new('extended') }
 
   it "roundtrips xhtml1 entities via named encoding" do
     each_mapping 'xhtml1' do |name, string|
@@ -50,6 +51,30 @@ RSpec.describe 'Round trip conversion' do
   it "roundtrips html4 entities via hexadecimal encoding" do
     each_mapping 'html4' do |name, string|
       expect(html4_entities.decode(html4_entities.encode(string, :hexadecimal))).to eq(string)
+    end
+  end
+
+  it "roundtrips extended entities via named encoding" do
+    each_mapping 'extended' do |name, string|
+      expect(extended_entities.decode(extended_entities.encode(string, :named))).to eq(string)
+    end
+  end
+
+  it "roundtrips extended entities via basic and named encoding" do
+    each_mapping 'extended' do |name, string|
+      expect(extended_entities.decode(extended_entities.encode(string, :basic, :named))).to eq(string)
+    end
+  end
+
+  it "roundtrips extended entities via basic named and decimal encoding" do
+    each_mapping 'extended' do |name, string|
+      expect(extended_entities.decode(extended_entities.encode(string, :basic, :named, :decimal))).to eq(string)
+    end
+  end
+
+  it "roundtrips extended entities via hexadecimal encoding" do
+    each_mapping 'extended' do |name, string|
+      expect(extended_entities.decode(extended_entities.encode(string, :hexadecimal))).to eq(string)
     end
   end
 

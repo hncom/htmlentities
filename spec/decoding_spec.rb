@@ -3,7 +3,7 @@ require_relative "./spec_helper"
 
 RSpec.describe "Decoding" do
   let(:entities) {
-    [:xhtml1, :html4, :expanded].map{ |a| HTMLEntities.new(a) }
+    [:xhtml1, :html4, :extended, :expanded].map{ |a| HTMLEntities.new(a) }
   }
 
   def assert_decode(expected, input)

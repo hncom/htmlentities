@@ -44,7 +44,7 @@ class HTMLEntities
     def extended_entity_regexp
       @extended_entity_regexp ||= (
         pattern = '[^\u{20}-\u{7E}]'
-        pattern << "|'" if @flavor == 'html4'
+        pattern << "|'" if @flavor == 'extended'
         Regexp.new(pattern)
       )
     end

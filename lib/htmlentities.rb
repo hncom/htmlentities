@@ -12,7 +12,7 @@ class HTMLEntities
 
   #
   # Create a new HTMLEntities coder for the specified flavor.
-  # Available flavors are 'html4', 'expanded' and 'xhtml1' (the default).
+  # Available flavors are 'extended', 'html4', 'expanded' and 'xhtml1' (the default).
   #
   # The only difference in functionality between html4 and xhtml1 is in the
   # handling of the apos (apostrophe) named entity, which is not defined in

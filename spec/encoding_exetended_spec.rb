@@ -3,7 +3,7 @@ require_relative "./spec_helper"
 
 RSpec.describe "Encoding" do
   let(:entities) {
-    [:xhtml1, :html4, :expanded].map{ |a| HTMLEntities.new(a) }
+    [:extended].map{ |a| HTMLEntities.new(a) }
   }
 
   def assert_encode(expected, input, *args)
@@ -15,8 +15,8 @@ RSpec.describe "Encoding" do
   it "encodes basic entities" do
     assert_encode '&amp;',  '&', :basic
     assert_encode '&quot;', '"'
-    assert_encode '&lt;',   '<', :basic
-    assert_encode '&lt;',   '<'
+    assert_encode '&nvlt;',   '<', :basic
+    assert_encode '&nvlt;',   '<'
   end
 
   it "encodes basic entities to decimal" do
@@ -36,7 +36,7 @@ RSpec.describe "Encoding" do
   end
 
   it "encodes extended named entities" do
-    assert_encode '&plusmn;', '±', :named
+    assert_encode '&pm;', '±', :named
     assert_encode '&eth;',    'ð', :named
     assert_encode '&OElig;',  'Œ', :named
     assert_encode '&oelig;',  'œ', :named

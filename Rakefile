@@ -2,7 +2,7 @@ require "rspec/core/rake_task"
 require "rake/clean"
 
 CLEAN.include("doc")
-DOCTYPES = %w[html4 xhtml1]
+DOCTYPES = %w[html4 html5 xhtml1]
 DATA_FILES = DOCTYPES.map{ |d| "lib/htmlentities/mappings/#{d}.rb" }
 SOURCES = FileList["lib/**/*.rb"] - DATA_FILES
 

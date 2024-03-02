@@ -12,7 +12,8 @@ class HTMLEntities
 
   #
   # Create a new HTMLEntities coder for the specified flavor.
-  # Available flavors are 'extended', 'html4', 'expanded' and 'xhtml1' (the default).
+  # Available flavors are 'extended', 'html4', 'expanded' (for both html4 and html5 versions)
+  # and 'xhtml1' (the default).
   #
   # The only difference in functionality between html4 and xhtml1 is in the
   # handling of the apos (apostrophe) named entity, which is not defined in
@@ -28,6 +29,8 @@ class HTMLEntities
   #
   # 'expanded' is a strict superset of the XHTML entities: every xhtml named
   # entity encodes and decodes the same under :expanded as under :xhtml1
+  #
+  # 'extended' includes both type of encoding variants of html4 and html5
   #
   def initialize(flavor='xhtml1')
     @flavor = flavor.to_s.downcase

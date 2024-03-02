@@ -38,13 +38,13 @@ class HTMLEntities
     end
 
     def basic_entity_regexp
-      @basic_entity_regexp ||= @flavor.match(/^html/) ? /[<>"&]/ : /[<>'"&]/
+      @basic_entity_regexp ||= @flavor.match(/^(html|extended)/) ? /[<>"&]/ : /[<>'"&]/
     end
 
     def extended_entity_regexp
       @extended_entity_regexp ||= (
         pattern = '[^\u{20}-\u{7E}]'
-        pattern << "|'" if @flavor == 'extended'
+        pattern << "|'" if %w[html4 extended].include?(@flavor)
         Regexp.new(pattern)
       )
     end
